@@ -1,3 +1,4 @@
+/********此文件可以直接node 运行***********/
 const path = require("path");
 const fs = require("fs");
 //index路由所在文件目录
