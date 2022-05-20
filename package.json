@@ -1,6 +1,6 @@
 {
   "name": "router-file-create",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "根据vue路由数据自动生成文件",
   "main": "index.js",
   "scripts": {
