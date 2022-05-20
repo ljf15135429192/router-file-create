@@ -70,7 +70,7 @@ function txt() {
     const { queryData, queryArr } = readFileReg(url, /query.(\w*)/gi)
     // console.log(routerArr, '返回')
     templateStr += `
-    // ${iterator.meta.title} 
+    // ${iterator.meta?.title || ''} 
     路由: ${iterator.path}
     参数: ${queryArr.join(',')|| "无" }
     ${ queryArr.join(',') && (qs(queryData)?'示例: '+ iterator.path+'?'+qs(queryData):'示例: '+ iterator.path)}
@@ -95,7 +95,7 @@ async function main() {
   } catch (err) {
     console.log(err)
   }
-  routerArr = await import('/' + writeFile)
+  routerArr = await import('file://' + writeFile)
 
   fs.unlinkSync(writeFile, function (err) {
     if (err) return
@@ -122,18 +122,18 @@ function readFileReg(url, reg) {
       }
     })
     .match(reg)
-  console.log('解析返回数据', arr)
+  // console.log('解析返回数据', arr)
   if (arr) {
     for (const iterator of arr) {
       let key = iterator.split('.')[1]
-      if(key){
+      if(key && !queryData[key]){
         queryData[key] = 'xxx'
         queryArr.push(key)
       }
   
     }
   }
-
+  console.log('解析返回数据', queryArr)
   return { queryData, queryArr }
 }
 //创建目录
