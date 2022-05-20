@@ -1,4 +1,11 @@
 /********此文件可以直接node 运行***********/
+/**
+ * 1.先设置下方两个文件路径
+ * 2.node demo.js vue 根据路由文件自动生成文件夹和vue文件，仅支持固定格式
+ * 3.node demo.js txt 确保已有文件情况下，往目标文件夹下生成1.txt包含原生需要信息
+ * 
+ * **/
+
 const path = require("path");
 const fs = require("fs");
 //index路由所在文件目录
